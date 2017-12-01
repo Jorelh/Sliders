@@ -1,0 +1,39 @@
+
+$(document).ready(function() {
+   
+    //sélection des éléments du slider
+	var slides = document.querySelectorAll('.slideItm');
+	//initialisation de la variable pour l'attribution de la classe current à l'image active
+	var currentSlide = 0;
+
+	//la fonction setInterval définit le délai de rappel de la fonction en argument, ici nextSlide toutes les 2 secondes
+	// var slideInterval = setInterval(nextSlide,2000);
+
+	//fonction qui anime le slider
+	function nextSlide() {
+		
+		//supprime la classe current de l'image précédente si elle existe
+	    if ($(slides[currentSlide]).hasClass('current')){
+
+	    	$(slides[currentSlide]).removeClass('current');
+	    }
+	    
+	    // ++ incrémente (+1) la valeur de la variable, ici currentSlide
+	    currentSlide++;
+	    
+	    // % retourne le reste de la division par le nombre total d'éléments dans le slider 
+	    // %= retourne le résultat du calcul de modulo, ici le modulo de currentSlide par le nombre total d'éléments dans la slider
+	    // -> le calcul permet le retour au premier item une fois le dernier atteint
+	    currentSlide %= slides.length;
+
+	    // Ajoute la classe current à l'item à afficher
+	    $(slides[currentSlide]).addClass('current');
+
+	    // la fonction setTimeout définit le délais de rappel de la fonction en argument APRES que celle-ci se soit exécutée entièrement.
+	    // ici netSlide toutes les 2 secondes
+	    setTimeout(nextSlide, 2000);
+	}
+	
+	//appel de la fonction nextSlide pour délencher le slider
+	nextSlide();
+});
