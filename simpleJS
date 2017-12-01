@@ -1,0 +1,25 @@
+
+document.addEventListener("DOMContentLoaded", function() {
+   
+  //sélection des éléments du slider
+	var slides = document.getElementsByClassName('slideItm');
+	//initialisation de la variable pour l'attribution de la classe current à l'image active
+	var currentSlide = 0;
+	//la fonction setInterval définit le délai de rappel de la fonction en argument, ici nextSlide toutes les 2 secondes
+	var slideInterval = setInterval(nextSlide,2000);
+
+	//fonction qui anime le slider
+	function nextSlide() {
+		
+            //supprime la classe current de l'image précédente si elle existe
+	    slides[currentSlide].className = 'slideItm';
+	    // % retourne le reste de la division par le nombre total d'éléments dans le slider 
+	    // -> retourne au premier item une fois le dernier atteint
+	    console.log('bwah');
+	    currentSlide = (currentSlide+1)%slides.length;
+	    console.log('badah');
+	    // Ajoute la classe current à l'item à afficher
+	    slides[currentSlide].className = 'slideItm current';
+	}
+	    
+});
